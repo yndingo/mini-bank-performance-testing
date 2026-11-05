@@ -1,0 +1,15 @@
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Результаты сборки
+target/
+build/
+out/
+.gradle/
+
+# Локальные секреты и логи
+.env
+.env.*
+!.env.example
+*.log
