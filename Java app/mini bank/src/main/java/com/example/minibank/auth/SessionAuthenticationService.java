@@ -15,6 +15,12 @@ package com.example.minibank.auth;
  * статуса ACTIVE и срока действия.
  *
  * Исходный токен не сохраняется и не журналируется.
+ *
+ *
+ * Срок доступа фиксирован при активации сессии.
+ * Успешные запросы не продлевают expiresAt.
+ * При истечении срока или недействительной сессии
+ * возвращается HTTP 401 с заголовком WWW-Authenticate: Bearer.
  */
 
 import org.springframework.http.HttpHeaders;
