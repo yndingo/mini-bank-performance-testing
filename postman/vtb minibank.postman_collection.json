@@ -103,7 +103,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"phone\": \"+79990000002\",\r\n  \"password\": \"DemoPass123!2\"\r\n}",
+					"raw": "{\r\n  \"phone\": \"+79990000001\",\r\n  \"password\": \"DemoPass123!\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -136,7 +136,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"code\": \"761557\"\r\n}",
+					"raw": "{\r\n  \"code\": \"367454\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -144,7 +144,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8080/api/auth/login/b2448194-3341-48e7-9c1e-eca312dbcfe6/confirm",
+					"raw": "http://127.0.0.1:8080/api/auth/login/b6ab3a28-4f40-4cd0-af01-2da7fc742a9e/confirm",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -157,7 +157,7 @@
 						"api",
 						"auth",
 						"login",
-						"b2448194-3341-48e7-9c1e-eca312dbcfe6",
+						"b6ab3a28-4f40-4cd0-af01-2da7fc742a9e",
 						"confirm"
 					]
 				}
@@ -166,26 +166,19 @@
 		},
 		{
 			"name": "GET accounts 1 клиент",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
 				"auth": {
 					"type": "bearer",
 					"bearer": [
 						{
 							"key": "token",
-							"value": "0cQh7sZle8jSSKDgFaSQwRxES86HteGQgrfZWp8FmGM",
+							"value": "_N0Rl_LLHW-l7GdYB56B8n8WuZP9iCskhlge7UbwCRI",
 							"type": "string"
 						}
 					]
 				},
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"lastName\": \"Иванов\",\r\n  \"firstName\": \"Иван\",\r\n  \"middleName\": \"Иванович\",\r\n  \"phone\": \"+79990000001\",\r\n  \"password\": \"DemoPass123!\"\r\n}"
-				},
 				"url": {
 					"raw": "http://127.0.0.1:8080/api/accounts",
 					"protocol": "http",
@@ -206,26 +199,19 @@
 		},
 		{
 			"name": "GET operations 1 клиент",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
 				"auth": {
 					"type": "bearer",
 					"bearer": [
 						{
 							"key": "token",
-							"value": "0cQh7sZle8jSSKDgFaSQwRxES86HteGQgrfZWp8FmGM",
+							"value": "_N0Rl_LLHW-l7GdYB56B8n8WuZP9iCskhlge7UbwCRI",
 							"type": "string"
 						}
 					]
 				},
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"lastName\": \"Иванов\",\r\n  \"firstName\": \"Иван\",\r\n  \"middleName\": \"Иванович\",\r\n  \"phone\": \"+79990000001\",\r\n  \"password\": \"DemoPass123!\"\r\n}"
-				},
 				"url": {
 					"raw": "http://127.0.0.1:8080/api/accounts/7485f08c-2bbf-4e58-ae21-b5b73b8c8144/operations",
 					"protocol": "http",
@@ -248,26 +234,19 @@
 		},
 		{
 			"name": "GET accounts 2 клиент",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
 				"auth": {
 					"type": "bearer",
 					"bearer": [
 						{
 							"key": "token",
-							"value": "TQNDHxUwRgAl66qzeAWpfP8Was52dtbsGnIeqMZdhjA",
+							"value": "wb9BhednqgDzbDyjv6ExaoZWbionrRhtrTqeSV1j7wE",
 							"type": "string"
 						}
 					]
 				},
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"lastName\": \"Иванов\",\r\n  \"firstName\": \"Иван\",\r\n  \"middleName\": \"Иванович\",\r\n  \"phone\": \"+79990000001\",\r\n  \"password\": \"DemoPass123!\"\r\n}"
-				},
 				"url": {
 					"raw": "http://127.0.0.1:8080/api/accounts",
 					"protocol": "http",
@@ -288,26 +267,19 @@
 		},
 		{
 			"name": "GET operations 2 клиент",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
 				"auth": {
 					"type": "bearer",
 					"bearer": [
 						{
 							"key": "token",
-							"value": "TQNDHxUwRgAl66qzeAWpfP8Was52dtbsGnIeqMZdhjA",
+							"value": "wb9BhednqgDzbDyjv6ExaoZWbionrRhtrTqeSV1j7wE",
 							"type": "string"
 						}
 					]
 				},
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"lastName\": \"Иванов\",\r\n  \"firstName\": \"Иван\",\r\n  \"middleName\": \"Иванович\",\r\n  \"phone\": \"+79990000001\",\r\n  \"password\": \"DemoPass123!\"\r\n}"
-				},
 				"url": {
 					"raw": "http://127.0.0.1:8080/api/accounts/3c68eec3-c66f-4f1f-b536-b19b1d1fbe1e/operations",
 					"protocol": "http",
@@ -424,7 +396,8 @@
 					{
 						"key": "Idempotency-Key",
 						"value": "8e62fb22-a5da-4d1b-96ed-ef8c5cc40379",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					}
 				],
 				"body": {
@@ -548,15 +521,6 @@
 				},
 				"method": "POST",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"sourceAccountId\": \"7485f08c-2bbf-4e58-ae21-b5b73b8c8144\",\r\n  \"destinationAccountNumber\": \"ACC-7485f08c2bbf4e58ae21b5b73b8c8144\",\r\n  \"amount\": 100.00\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
 					"raw": "http://127.0.0.1:8080/api/external-transfers/8256571f-00b0-45b7-abab-a22eb94313ae/confirm",
 					"protocol": "http",
