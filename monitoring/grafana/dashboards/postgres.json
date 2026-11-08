@@ -5,8 +5,8 @@
     "name": "000000039",
     "namespace": "default",
     "uid": "89b4bf21-10a4-4637-afbf-6e9e619ce2e6",
-    "resourceVersion": "1794053564302995",
-    "generation": 8,
+    "resourceVersion": "1794139820738013",
+    "generation": 11,
     "creationTimestamp": "2026-11-07T10:03:50Z",
     "labels": {
       "grafana.app/deprecatedInternalID": "2316086696378368"
@@ -15,7 +15,7 @@
       "grafana.app/createdBy": "user:bg3k7f0yz5am8f",
       "grafana.app/saved-from-ui": "Grafana v13.3.0 (6f8ce3c693)",
       "grafana.app/updatedBy": "user:bg3k7f0yz5am8f",
-      "grafana.app/updatedTimestamp": "2026-11-07T12:12:44Z"
+      "grafana.app/updatedTimestamp": "2026-11-08T12:10:20Z"
     }
   },
   "spec": {
@@ -589,7 +589,7 @@
         "kind": "Panel",
         "spec": {
           "id": 22,
-          "title": "Average CPU Usage",
+          "title": "Postgres exporter — CPU usage",
           "description": "Average user and system CPU time spent in seconds.",
           "links": [],
           "data": {
@@ -608,10 +608,10 @@
                       },
                       "spec": {
                         "editorMode": "code",
-                        "expr": "avg(rate(process_cpu_seconds_total{release=\"$release\"}[5m]) * 1000)",
+                        "expr": "rate(\r\n  process_cpu_seconds_total{\r\n    job=\"postgres\",\r\n    instance=\"$instance\"\r\n  }[1m]\r\n)",
                         "format": "time_series",
                         "intervalFactor": 2,
-                        "legendFormat": "CPU Time",
+                        "legendFormat": "postgres-exporter",
                         "range": true
                       }
                     },
