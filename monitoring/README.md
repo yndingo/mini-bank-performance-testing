@@ -1,4 +1,38 @@
-# mini-bank-performance-testing
-Spring Boot mini-bank with multi-step banking operations, Docker deployment, Prometheus/Grafana monitoring, Postman collection and JMeter load tests.
-# задание от ВТБ
-Написать приложение на Java Springboot с пользовательской логикой, например мини банк. регистрация (ФИО, данные, телефон) - номер аккаунт, счет, карту. авторизация по номеру телефона переводы клиентам внутренним внешним платежи по шаблону Каждый из перечисленных операций делался минимум в 2-3 этапа и связаны между собой sessionid или transactionid.Прикрутить мониторинг к БД и приложения (actuator). Скидывать метрики в Prometheus, графики рисовать в Grafna (дашборды взять стандартные на сайте графины) Вывести метрики утилизация ресурсов приклада.Развернуть все это в Docker (не docker desktop).Нагрузить: Для отладки сделать Postman коллекцию со операциями своего приложения Взять любой инструмент Jmeter или Gatling написать скрипты нагрузки и провести 2 теста поиск максимума и подтверждения. К инструменту прикрутить так же стандартный мониторинг influxdb либо prometheus и дашборды в grafana.
+# Мониторинг стенда
+
+Мониторинг построен на Prometheus и Grafana.
+
+## Источники метрик
+
+| Компонент | Источник | Prometheus job |
+|---|---|---|
+| Spring Boot | /actuator/prometheus | mini-bank |
+| PostgreSQL | postgres-exporter | postgres |
+| Контейнеры | cAdvisor | cadvisor |
+| JMeter | Prometheus Backend Listener через проброс порта | jmeter |
+| Prometheus | Собственные метрики | prometheus |
+
+## Конфигурация
+
+- [Prometheus](prometheus/prometheus.yml)
+- [Docker Compose](../compose.yaml)
+- [Дашборды Grafana](grafana/README.md)
+- [Подробное описание мониторинга](../docs/monitoring.md)
+
+## Интервалы сбора
+
+- Основной интервал: 15 секунд.
+- JMeter: 5 секунд.
+- cAdvisor: 5 секунд.
+
+## Важные особенности
+
+- Метрики JMeter доступны во время выполнения теста.
+- DOWN target JMeter после остановки теста
+  не означает остановку Prometheus.
+- Адрес 172.18.0.1 в конфигурации зависит от сети стенда
+  и должен быть проверен при развёртывании на другой машине.
+- CPU контейнеров измеряется в эквивалентах занятого ядра.
+- Working set контейнера не равен Java heap.
+- Накопительные счётчики не следует интерпретировать
+  как значения только за последний нагрузочный тест.
