@@ -1,29 +1,33 @@
-# Развёртывание стенда
-
-## Требования
-## Сборка образа приложения
 ## Переменные окружения
-## Инициализация PostgreSQL
-## Запуск Docker Compose
-## Доступ к сервисам
-## Проверка работоспособности
-## Остановка стенда
 
-| Сервис            | CPU  | Память  |
-| ----------------- | ---- | ------- |
-| app               | 1    | 1 GiB   |
-| db                | 1    | 1 GiB   |
-| prometheus        | 1    | 1 GiB   |
-| grafana           | 1    | 1 GiB   |
-| postgres-exporter | 0,25 | 256 MiB |
-| jmeter-proxy      | 0,25 | 64 MiB  |
-| cadvisor          | 0,5  | 512 MiB |
+В корне репозитория расположен [.env.example](../.env.example).
 
-Для JVM приложения:
--Xms256m -Xmx512m
+На Ubuntu, из каталога с compose.yaml:
 
-- [Compose](../compose.yaml)
-- [Java-проект](../Java%20app/mini%20bank/)
-- [Конфигурация Prometheus](../monitoring/prometheus/prometheus.yml)
-- [Дашборды](../monitoring/grafana/README.md)
+```bash
+cp .env.example .env
+```
 
+Перед запуском проверить значения:
+
+| Переменная | Назначение |
+|---|---|
+| POSTGRES_DB | Имя базы данных |
+| POSTGRES_USER | Пользователь инициализации PostgreSQL |
+| POSTGRES_PASSWORD | Пароль пользователя PostgreSQL |
+| MINIBANK_DB_PASSWORD | Пароль пользователя приложения minibank_app |
+| POSTGRES_EXPORTER_PASSWORD | Пароль пользователя postgres_exporter |
+
+Имена базы и пользователей должны соответствовать compose.yaml
+и фактической инициализации PostgreSQL.
+
+## Проверка конфигурации
+
+Из каталога с compose.yaml:
+
+```bash
+sudo docker compose config --quiet
+```
+
+Команда проверяет корректность конфигурации Compose.
+Она не создаёт пользователей БД и не собирает образ приложения.

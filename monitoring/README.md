@@ -14,7 +14,7 @@
 
 ## Конфигурация
 
-- [Prometheus](prometheus/prometheus.yml)
+- [Prometheus](prometheus.yml)
 - [Docker Compose](../compose.yaml)
 - [Дашборды Grafana](grafana/README.md)
 - [Подробное описание мониторинга](../docs/monitoring.md)

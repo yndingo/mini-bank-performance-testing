@@ -19,8 +19,12 @@
   com.github.kolesnikovm.PrometheusListener.
 - HTTP implementation: HttpClient4.
 
-Точные версии установленных плагинов и Java генератора
-должны быть зафиксированы перед повторением теста.
+| Компонент | Версия |
+|---|---|
+| Apache JMeter | 5.4.1 |
+| Java генератора | Указать результат java -version |
+| Custom Thread Groups / Ultimate Thread Group | Указать установленную версию |
+| Prometheus Backend Listener | Указать версию установленного JAR |
 
 ## Сценарий
 
@@ -61,11 +65,13 @@ Authorization: Bearer ${Bearer}
 - Implementation: HttpClient4.
 - Use KeepAlive: включено.
 
-В локальном bin/user.properties:
+В локальном `bin/user.properties`:
 
+```properties
 httpclient.reset_state_on_thread_group_iteration=false
+```
 
-После изменения user.properties перезапустить JMeter.
+После изменения перезапустить JMeter.
 
 ## Мониторинг
 
@@ -78,7 +84,7 @@ Backend Listener экспортирует метрики на порту 9270.
 - exporterPort: 9270.
 
 Доступ Prometheus к генератору организуется через SSH-проброс
-и jmeter-proxy; схема описана в документации мониторинга.
+и jmeter-proxy; Схема описана в [документации мониторинга](../docs/monitoring.md).
 
 ## Перед запуском
 
