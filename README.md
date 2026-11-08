@@ -1,6 +1,6 @@
 # Mini-bank: deployment, monitoring and performance testing
 
-Учебный проект мини-банка на Java Spring Boot и PostgreSQL:
+Отчетный проект мини-банка на Java Spring Boot и PostgreSQL:
 развёртывание в Docker Compose, мониторинг Prometheus/Grafana
 и нагрузочное тестирование JMeter.
 
