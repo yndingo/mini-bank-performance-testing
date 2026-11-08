@@ -1,0 +1,108 @@
+services:
+  db:
+    image: postgres@sha256:3b0cda93be7c8dba2ed484d19393d93845dc3dafb88973e248ba8e6d99d784e1
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d minibank"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    cpus: "1.0"
+    mem_limit: 1g
+    memswap_limit: 1g
+  app:
+    image: mini-bank:local
+    restart: unless-stopped
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/minibank
+      SPRING_DATASOURCE_USERNAME: minibank_app
+      MINIBANK_DB_PASSWORD: ${MINIBANK_DB_PASSWORD:?Set MINIBANK_DB_PASSWORD in .env}
+      SERVER_ADDRESS: 0.0.0.0
+      SERVER_PORT: 8080
+      SERVER_TOMCAT_MBEANREGISTRY_ENABLED: "true"
+      JAVA_TOOL_OPTIONS: "-Xms256m -Xmx512m"
+    ports:
+      - "127.0.0.1:8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+    cpus: "1.0"
+    mem_limit: 1g
+    memswap_limit: 1g
+  prometheus:
+    image: prom/prometheus@sha256:e04987641b57704f408e31f6373ba4138ecf27cb4a165d24aabb6c38fddd0f06
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+    cpus: "1.0"
+    mem_limit: 1g
+    memswap_limit: 1g
+  grafana:
+    image: grafana/grafana@sha256:488984b716c0862639f91a698adbe2862677a5a07bad42da5f03f3030883b205
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3000:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+    cpus: "1.0"
+    mem_limit: 1g
+    memswap_limit: 1g
+  postgres-exporter:
+    image: prometheuscommunity/postgres-exporter@sha256:ac5ec343104fae0e2d84a27bb8d69b38430a11910c5382cad85d478d2bab713e
+    command:
+      - "--collector.postmaster"
+      - "--collector.stat_checkpointer"
+    restart: unless-stopped
+    environment:
+      DATA_SOURCE_URI: "db:5432/minibank?sslmode=disable"
+      DATA_SOURCE_USER: postgres_exporter
+      DATA_SOURCE_PASS: ${POSTGRES_EXPORTER_PASSWORD:?Set POSTGRES_EXPORTER_PASSWORD im .env}
+    ports:
+      - "127.0.0.1:9187:9187"
+    cpus: "0.25"
+    mem_limit: 256m
+    memswap_limit: 256m
+  jmeter-proxy:
+    image: alpine/socat@sha256:e8a6e8868a8e6e01d9c2c321a8f8d4474d2d741d962462e5c5a124a8e66a0055
+    restart: unless-stopped
+    network_mode: host
+    cpus: "0.25"
+    mem_limit: 64m
+    memswap_limit: 64m
+    command:
+      - "TCP4-LISTEN:9271,bind=172.18.0.1,reuseaddr,fork"
+      - "TCP4:127.0.0.1:9270"
+  cadvisor:
+    image: ghcr.io/google/cadvisor:0.57.0
+    restart: unless-stopped
+    privileged: true
+    cgroup: host
+    cpus: "0.5"
+    mem_limit: 512m
+    memswap_limit: 512m
+    ports:
+      - "127.0.0.1:8081:8080"
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker:/var/lib/docker:ro
+    devices:
+      - /dev/kmsg:/dev/kmsg
+
+volumes:
+  postgres_data:
+  prometheus_data:
+  grafana_data:

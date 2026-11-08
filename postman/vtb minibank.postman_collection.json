@@ -1,0 +1,812 @@
+{
+	"info": {
+		"_postman_id": "20577ecf-ba98-4279-a8c6-31ac4a8a59a7",
+		"name": "vtb minibank",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "registrations",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"lastName\": \"Иванов2\",\r\n  \"firstName\": \"Иван2\",\r\n  \"middleName\": \"Иванович2\",\r\n  \"phone\": \"+79990000002\",\r\n  \"password\": \"DemoPass123!2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/registrations",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"registrations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "confirm-phone",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"code\": \"944163\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/registrations/a98d9833-309d-450f-991a-6f22d3b8ce3d/confirm-phone",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"registrations",
+						"a98d9833-309d-450f-991a-6f22d3b8ce3d",
+						"confirm-phone"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registrations complete",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/registrations/a98d9833-309d-450f-991a-6f22d3b8ce3d/complete",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"registrations",
+						"a98d9833-309d-450f-991a-6f22d3b8ce3d",
+						"complete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "auth/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"phone\": \"+79990000002\",\r\n  \"password\": \"DemoPass123!2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "auth/confirm",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"code\": \"761557\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/auth/login/b2448194-3341-48e7-9c1e-eca312dbcfe6/confirm",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"login",
+						"b2448194-3341-48e7-9c1e-eca312dbcfe6",
+						"confirm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET accounts 1 клиент",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "0cQh7sZle8jSSKDgFaSQwRxES86HteGQgrfZWp8FmGM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"lastName\": \"Иванов\",\r\n  \"firstName\": \"Иван\",\r\n  \"middleName\": \"Иванович\",\r\n  \"phone\": \"+79990000001\",\r\n  \"password\": \"DemoPass123!\"\r\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/accounts",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET operations 1 клиент",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "0cQh7sZle8jSSKDgFaSQwRxES86HteGQgrfZWp8FmGM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"lastName\": \"Иванов\",\r\n  \"firstName\": \"Иван\",\r\n  \"middleName\": \"Иванович\",\r\n  \"phone\": \"+79990000001\",\r\n  \"password\": \"DemoPass123!\"\r\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/accounts/7485f08c-2bbf-4e58-ae21-b5b73b8c8144/operations",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"accounts",
+						"7485f08c-2bbf-4e58-ae21-b5b73b8c8144",
+						"operations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET accounts 2 клиент",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "TQNDHxUwRgAl66qzeAWpfP8Was52dtbsGnIeqMZdhjA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"lastName\": \"Иванов\",\r\n  \"firstName\": \"Иван\",\r\n  \"middleName\": \"Иванович\",\r\n  \"phone\": \"+79990000001\",\r\n  \"password\": \"DemoPass123!\"\r\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/accounts",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET operations 2 клиент",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "TQNDHxUwRgAl66qzeAWpfP8Was52dtbsGnIeqMZdhjA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"lastName\": \"Иванов\",\r\n  \"firstName\": \"Иван\",\r\n  \"middleName\": \"Иванович\",\r\n  \"phone\": \"+79990000001\",\r\n  \"password\": \"DemoPass123!\"\r\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/accounts/3c68eec3-c66f-4f1f-b536-b19b1d1fbe1e/operations",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"accounts",
+						"3c68eec3-c66f-4f1f-b536-b19b1d1fbe1e",
+						"operations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "auth/logout",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "649Jf6bONv7zVGcRvCjyh_gTjpMqPQtgSvNU7gFjUGk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/auth/logout",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "demo-deposit",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "qM69Dy-G_oVFOoA8RQP9inMcmHXWRKP3YpnjGRqS8ns",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"amount\": 1000000.01\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/accounts/7485f08c-2bbf-4e58-ae21-b5b73b8c8144/demo-deposit",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"accounts",
+						"7485f08c-2bbf-4e58-ae21-b5b73b8c8144",
+						"demo-deposit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "transfers/prepare",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "FCki5TVTXHDXylN4iYv3fzGBlqNXTuDaMZrJQaHSa7U",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Idempotency-Key",
+						"value": "8e62fb22-a5da-4d1b-96ed-ef8c5cc40379",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"sourceAccountId\": \"7485f08c-2bbf-4e58-ae21-b5b73b8c8144\",\r\n  \"destinationAccountNumber\": \"ACC-3c68eec3c66f4f1fb536b19b1d1fbe1e\",\r\n  \"amount\": 50.00\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/transfers/prepare",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"transfers",
+						"prepare"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "transfers/confirm",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "FCki5TVTXHDXylN4iYv3fzGBlqNXTuDaMZrJQaHSa7U",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/transfers/5572b73c-2c23-4da4-af1c-cf9309274a5a/confirm",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"transfers",
+						"5572b73c-2c23-4da4-af1c-cf9309274a5a",
+						"confirm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "external-transfers/prepare",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "0cQh7sZle8jSSKDgFaSQwRxES86HteGQgrfZWp8FmGM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"sourceAccountId\": \"7485f08c-2bbf-4e58-ae21-b5b73b8c8144\",\r\n  \"recipientName\": \"Демо Получатель\",\r\n  \"recipientAccount\": \"11111111111111111111\",\r\n  \"recipientBankCode\": \"111111111\",\r\n  \"amount\": 40.00\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/external-transfers/prepare",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"external-transfers",
+						"prepare"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "external-transfers/confirm",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "0cQh7sZle8jSSKDgFaSQwRxES86HteGQgrfZWp8FmGM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"sourceAccountId\": \"7485f08c-2bbf-4e58-ae21-b5b73b8c8144\",\r\n  \"destinationAccountNumber\": \"ACC-7485f08c2bbf4e58ae21b5b73b8c8144\",\r\n  \"amount\": 100.00\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/external-transfers/8256571f-00b0-45b7-abab-a22eb94313ae/confirm",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"external-transfers",
+						"8256571f-00b0-45b7-abab-a22eb94313ae",
+						"confirm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "payment-templates create",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "0cQh7sZle8jSSKDgFaSQwRxES86HteGQgrfZWp8FmGM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"templateName\": \"Демо Интернет\",\r\n  \"recipientName\": \"Демо Провайдер\",\r\n  \"recipientAccount\": \"22222222222222222222\",\r\n  \"recipientBankCode\": \"222222222\",\r\n  \"paymentPurpose\": \"Оплата интернета, лицевой счёт DEMO-001\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/payment-templates",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"payment-templates"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get payment-templates",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "0cQh7sZle8jSSKDgFaSQwRxES86HteGQgrfZWp8FmGM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/payment-templates",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"payment-templates"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "payments-templates/prepare client 1",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "0cQh7sZle8jSSKDgFaSQwRxES86HteGQgrfZWp8FmGM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"templateId\": \"016ae867-5b26-44ff-9ee6-a0822dfc9fd6\",\r\n  \"sourceAccountId\": \"7485f08c-2bbf-4e58-ae21-b5b73b8c8144\",\r\n  \"amount\": 30.00\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/payments/prepare",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"payments",
+						"prepare"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "payments-templates/prepare 2 client",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "TQNDHxUwRgAl66qzeAWpfP8Was52dtbsGnIeqMZdhjA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"templateId\": \"016ae867-5b26-44ff-9ee6-a0822dfc9fd6\",\r\n  \"sourceAccountId\": \"3c68eec3-c66f-4f1f-b536-b19b1d1fbe1e\",\r\n  \"amount\": 10.00\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/payments/prepare",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"payments",
+						"prepare"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "payments-templates/confirm",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "0cQh7sZle8jSSKDgFaSQwRxES86HteGQgrfZWp8FmGM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/payments/505d2e56-c1ab-47cc-94dd-ad1bf66653d6/confirm",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"payments",
+						"505d2e56-c1ab-47cc-94dd-ad1bf66653d6",
+						"confirm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "payments-templates/confirm 2 client",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "TQNDHxUwRgAl66qzeAWpfP8Was52dtbsGnIeqMZdhjA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/payments/505d2e56-c1ab-47cc-94dd-ad1bf66653d6/confirm",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"payments",
+						"505d2e56-c1ab-47cc-94dd-ad1bf66653d6",
+						"confirm"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
