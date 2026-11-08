@@ -144,7 +144,8 @@ public class AuthSession {
         this.status = AuthSessionStatus.ACTIVE;
         this.accessTokenHash = accessTokenHash;
         this.activatedAt = now;
-        this.expiresAt = now.plusSeconds(30 * 60);
+        //время истечения сессии
+        this.expiresAt = now.plusSeconds(2 * 60 * 60);
         this.confirmationCodeHash = null;
         this.confirmationCodeExpiresAt = null;
     }
