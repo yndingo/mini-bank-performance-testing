@@ -22,9 +22,9 @@
 | Компонент | Версия |
 |---|---|
 | Apache JMeter | 5.4.1 |
-| Java генератора | Указать результат java -version |
-| Custom Thread Groups / Ultimate Thread Group | Указать установленную версию |
-| Prometheus Backend Listener | Указать версию установленного JAR |
+| Java генератора | Java HotSpot(TM) 64-Bit Server VM (build 17.0.10+11-LTS-240, mixed mode, sharing) |
+| Custom Thread Groups / Ultimate Thread Group | version 2.10 |
+| Prometheus Backend Listener | jmeter-prometheus-listener-2.6.3 |
 
 ## Сценарий
 
@@ -84,7 +84,8 @@ Backend Listener экспортирует метрики на порту 9270.
 - exporterPort: 9270.
 
 Доступ Prometheus к генератору организуется через SSH-проброс
-и jmeter-proxy; Схема описана в [документации мониторинга](../docs/monitoring.md).
+и jmeter-proxy. Схема описана
+в [документации мониторинга](../docs/monitoring.md).
 
 ## Перед запуском
 

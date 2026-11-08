@@ -1,3 +1,21 @@
+# Развёртывание стенда
+
+## Ресурсные ограничения
+
+| Сервис | CPU | Память |
+|---|---:|---:|
+| app | 1 | 1 GiB |
+| db | 1 | 1 GiB |
+| prometheus | 1 | 1 GiB |
+| grafana | 1 | 1 GiB |
+| postgres-exporter | 0,25 | 256 MiB |
+| jmeter-proxy | 0,25 | 64 MiB |
+| cadvisor | 0,5 | 512 MiB |
+
+Настройки JVM приложения:
+
+`-Xms256m -Xmx512m`
+
 ## Переменные окружения
 
 В корне репозитория расположен [.env.example](../.env.example).
@@ -31,3 +49,11 @@ sudo docker compose config --quiet
 
 Команда проверяет корректность конфигурации Compose.
 Она не создаёт пользователей БД и не собирает образ приложения.
+
+## Файлы конфигурации
+
+- [Docker Compose](../compose.yaml)
+- [Пример переменных окружения](../.env.example)
+- [Java-проект](../Java%20app/mini%20bank/)
+- [Prometheus](../monitoring/prometheus.yml)
+- [Grafana](../monitoring/grafana/README.md)

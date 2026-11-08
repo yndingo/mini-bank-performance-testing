@@ -35,10 +35,15 @@
 - Среднее значение точек графика p95 не является
   общим p95 запросов за весь выбранный интервал.
 
-## Источники исходных дашбордов
+## Источники дашбордов
 
-| Дашборд           | Что заполнить                                                  |
-| ----------------- | -------------------------------------------------------------- |
-| jvm.json          | ***              |
-| postgres.json     | ***              |
-| load-testing.json | Собственный  |
+| Локальный файл | Исходный дашборд | Grafana ID |
+|---|---|---:|
+| [jvm.json](dashboards/jvm.json) | [JVM (Micrometer)](https://grafana.com/grafana/dashboards/4701-jvm-micrometer/) | 4701 |
+| [postgres.json](dashboards/postgres.json) | [PostgreSQL Database](https://grafana.com/grafana/dashboards/9628-postgresql-database/) | 9628 |
+| [load-testing.json](dashboards/load-testing.json) | Собственный дашборд проекта | — |
+
+Импортированные дашборды адаптированы под метрики и метки стенда.
+В репозитории сохранены используемые локальные версии JSON.
+
+Revision исходных импортированных версий не зафиксирован.
